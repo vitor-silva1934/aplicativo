@@ -16,13 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.urls import path
-from produtos import views
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('produtos.urls')),  # Aqui estamos incluindo as rotas do app produtos
-    path('', views.listar_produtos, name='listar_produtos'),
-    path('novo/', views.criar_produto, name='criar_produto'),
+    path('', include('produtos.urls')),  # Incluindo as URLs do app produtos
 ]
