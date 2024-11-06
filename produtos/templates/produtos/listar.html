@@ -1,8 +1,21 @@
-<h1>Lista de Produtos</h1>
-<ul>
-    {% for produto in produtos %}
-        <li>{{ produto.nome }} - {{ produto.descricao }} - {{ produto.preco }}</li>
-    {% empty %}
-        <li>Nenhum produto cadastrado.</li>
-    {% endfor %}
-</ul>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Produtos</title>
+</head>
+<body>
+    <h1>Produtos Cadastrados</h1>
+    <ul>
+        {% for produto in produtos %}
+            <li>
+                {{ produto.nome }} - {{ produto.preco }}
+                <a href="{% url 'deletar_produto' produto.id %}" onclick="return confirm('Tem certeza que deseja excluir?');">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="{% url 'criar_produto' %}">
+        <button>Criar Novo Produto</button>
+    </a>
+</body>
+</html>

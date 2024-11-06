@@ -21,4 +21,8 @@ def criar_produto(request):
         
     return render(request, 'produtos/criar.html', {'form': form})
 
+def deletar_produto(request, produto_id):
+    produto = Produto.objects.get(id=produto_id)
+    produto.delete()
+    return redirect('listar_produtos')
 
