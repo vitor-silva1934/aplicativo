@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .models import Produto
 from .forms import ProdutoForm
+from django.shortcuts import render, get_object_or_404
 
 def pagina_inicial(request):
     return render(request, 'produtos/pagina_inicial.html')
@@ -26,3 +27,17 @@ def deletar_produto(request, produto_id):
     produto.delete()
     return redirect('listar_produtos')
 
+def detalhes_produto(request, id):
+    produto = get_object_or_404(Produto, id=id)
+    return render(request, 'produtos/detalhes_produto.html', {'produto': produto})
+
+def editar_produto(request, id):
+    produto = get_object_or_404(Produto, id=id)
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_produtos')  # Redireciona para a página de listagem
+    else:
+        form = ProdutoForm(instance=produto)
+    return render(request, 'produtos/editar_produto.html', {'form': form, 'produto': produto})

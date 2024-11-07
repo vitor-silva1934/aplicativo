@@ -1,0 +1,16 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Produto</title>
+</head>
+<body>
+    <h1>Detalhes do Produto</h1>
+    <p><strong>Nome:</strong> {{ produto.nome }}</p>
+    <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+    <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
+    <p><strong>Quantidade:</strong> {{ produto.quantidade }}</p>
+
+    <a href="{% url 'editar_produto' produto.id %}">Editar Produto</a>
+    <a href="{% url 'listar_produtos' %}">Voltar para Listagem</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Produto</title>
+</head>
+<body>
+    <h1>Editar Produto: {{ produto.nome }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <a href="{% url 'listar_produtos' %}">Voltar para Listagem</a>
+</body>
+</html>
