@@ -13,7 +13,7 @@ body {
 }
 
 h1, h2 {
-    color: #444;
+    color: #000000;
 }
 
 ul {
@@ -30,13 +30,14 @@ button {
     background-color: #008CBA;
     color: white;
     padding: 10px 20px;
-    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #005f73;
 }
+
 
 .product-card {
     border: 1px solid #ddd;
@@ -45,4 +46,32 @@ button:hover {
     background-color: #fff;
     border-radius: 8px;
     text-align: center;
+}
+
+/* Estilo comum para todos os botões */
+.btn {
+    background-color: #008CBA; /* Cor de fundo verde */
+    color: white; /* Texto branco */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: none; /* Remover borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão */
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+    width: 200px; /* Largura fixa para os botões */
+}
+
+/* Efeito de hover (quando o mouse passa sobre o botão) */
+.btn:hover {
+    background-color: #005f73; /* Cor mais escura ao passar o mouse */
+}
+
+/* Ajuste para o layout */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaço entre os botões */
+    margin-top: 20px;
 }

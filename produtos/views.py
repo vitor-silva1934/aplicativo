@@ -19,8 +19,7 @@ def criar_produto(request):
             form.save()
             return redirect('listar_produtos')
     else:
-        form = ProdutoForm()
-        
+        form = ProdutoForm()    
     return render(request, 'produtos/criar.html', {'form': form})
 
 def deletar_produto(request, produto_id):
