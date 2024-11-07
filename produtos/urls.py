@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.pagina_inicial, name='pagina_inicial'),
@@ -9,3 +11,7 @@ urlpatterns = [
     path('editar/<int:id>/', views.editar_produto, name='editar_produto'),            #Editar produto
     path('deletar/<int:produto_id>/', views.deletar_produto, name='deletar_produto'), #Deletar os produtos
 ]
+
+if settings.DEBUG:
+    # Configurações específicas para o modo DEBUG
+    pass

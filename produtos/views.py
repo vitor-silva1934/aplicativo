@@ -4,11 +4,12 @@ from .models import Produto
 from .forms import ProdutoForm
 from django.shortcuts import render, get_object_or_404
 
+
 def pagina_inicial(request):
     return render(request, 'produtos/pagina_inicial.html')
 
 def listar_produtos(request):
-    produtos = Produto.objects.all()
+    produtos = Produto.objects.all()  # Obtém todos os produtos do banco de dados
     return render(request, 'produtos/listar.html', {'produtos': produtos})
 
 def criar_produto(request):
