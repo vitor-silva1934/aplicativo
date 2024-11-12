@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao E-Commerce! Faça login ou crie uma conta</h1>
+        <div class="links">
+            <a href="{% url 'login' %}"><button class="link-button">Fazer Login</button></a> 
+            <span>|</span>
+            <a href="{% url 'register' %}"><button class="link-button">Registrar-se</button></a>
+        </div>
+</body>
+</html>

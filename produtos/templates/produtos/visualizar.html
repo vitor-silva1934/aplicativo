@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Carrinho</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Visualizar Carrinho</h1>
+    </header>
+
+    <!-- Tabela com produtos do carrinho -->
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Total</th>
+                    <th>Ações</th>  <!-- Coluna de Ações -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens %}
+                    <tr>
+                        <td>{{ item.produto.nome }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R$ {{ item.produto.preco }}</td>
+                        <td>R$ {{ item.get_total_item_price }}</td>
+                        <td>
+                            <!-- Botão para remover item do carrinho -->
+                            <a href="{% url 'remover_item_carrinho' item.id %}">
+                                <button>Remover</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Exibe o total do carrinho -->
+        <div class="total">
+            <p><strong>Total do Carrinho: R$ {{ total }}</strong></p>
+        </div>
+
+        <!-- Botões de navegação -->
+        <div class="buttons">
+            <a href="{% url 'listar_produtos' %}"><button>Continuar Comprando</button></a>
+            <a href="{% url 'pagina_inicial' %}"><button>Voltar à Página Inicial</button></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -19,10 +19,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from produtos import views
+from django.contrib.auth.views import LoginView, LogoutView
+from produtos import views as produtos_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # URL para o painel administrativo
-    path('', include('produtos.urls')),
+    path('produtos/', include('produtos.urls')),  # Incluindo as URLs do app produtos
+    path('login/', LoginView.as_view(template_name='produtos/login.html'), name='login'),  # Login via auth_views
+    path('logout/', LogoutView.as_view(), name='logout'),  # Logout padrão do Django
+    path('register/', produtos_views.register, name='register'),  # Registro via view personalizada
+    path('', include('produtos.urls')),  # Página inicial (pode ser a de produtos ou outra)
 ]
 
 # Serve os arquivos de mídia durante o desenvolvimento

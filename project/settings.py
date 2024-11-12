@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'produtos'
+    'produtos',
 ]
 
 MIDDLEWARE = [
@@ -56,10 +56,8 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'templates',  # Aqui se refere à pasta de templates na raiz do projeto
-        ],
-        'APP_DIRS': True,  # Permite procurar templates dentro de cada app
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -132,3 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Onde as imagens dos produtos serão salvas
 MEDIA_URL = '/media/'  # URL onde as imagens podem ser acessadas no navegador
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Diretório onde as imagens são armazenadas
+
+# settings.py
+LOGIN_REDIRECT_URL = 'pagina_inicial'  
+LOGOUT_REDIRECT_URL = 'pagina_inicial'

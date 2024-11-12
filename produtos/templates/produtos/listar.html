@@ -5,25 +5,31 @@
     <table>
         <tr>
             <th>E Commerce</th>
-            
         </tr>
         {% for produto in produtos %}
-    <div class="product-card">
-        {% if produto.imagem %}
-            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="img-produto" style="width: 150px; height: auto;">
-        {% else %}
-            <img src="{% static 'default-image.png' %}" alt="Imagem não disponível" style="width: 150px; height: auto;">
-        {% endif %}
-        <h2>{{ produto.nome }}</h2>
-        <p>{{ produto.descricao }}</p>
-        <p>Preço: R$ {{ produto.preco }}</p>
-        <p>Quantidade: {{ produto.quantidade }}</p>
-        <a href="{% url 'editar_produto' produto.id %}"><button>Editar</button></a>
-        <a href="{% url 'deletar_produto' produto.id %}"><button>Deletar</button></a>
-        
+        <div class="product-card">
+            {% if produto.imagem %}
+                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="img-produto" style="width: 150px; height: auto;">
+            {% else %}
+                <img src="{% static 'default-image.png' %}" alt="Imagem não disponível" style="width: 150px; height: auto;">
+            {% endif %}
+            <h2>{{ produto.nome }}</h2>
+            <p>{{ produto.descricao }}</p>
+            <p>Preço: R$ {{ produto.preco }}</p>
+            <p>Quantidade disponível: {{ produto.quantidade }}</p>
 
-    </div>
-{% endfor %}
-<a href="{% url 'pagina_inicial' %}"><button>Voltar</button></a>
+            <!-- Formulário para selecionar quantidade e adicionar ao carrinho -->
+            <form action="{% url 'adicionar_ao_carrinho' produto.id %}" method="POST">
+                {% csrf_token %}
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" name="quantidade" id="quantidade" value="1" min="1" max="{{ produto.quantidade }}">
+                <button type="submit">Adicionar ao Carrinho</button>
+            </form>
+
+            <a href="{% url 'editar_produto' produto.id %}"><button>Editar</button></a>
+            <a href="{% url 'deletar_produto' produto.id %}"><button>Deletar</button></a>
+        </div>
+        {% endfor %}
+        <a href="{% url 'pagina_inicial' %}"><button>Voltar</button></a>
     </table>
 </html>
