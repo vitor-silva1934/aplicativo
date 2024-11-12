@@ -5,8 +5,14 @@
     <!-- Barra de Pesquisa -->
     <form method="get" action="{% url 'listar_produtos' %}">
         <input type="text" name="q" placeholder="Pesquisar produtos..." value="{{ query }}">
-        <button type="submit" >Buscar</button>
+        <button type="submit">Buscar</button>
     </form>
+
+    <!-- Botão para ir ao carrinho -->
+    <div class="carrinho-button">
+        <a href="{% url 'visualizar_carrinho' %}"><button>Carrinho</button>
+        </a>
+    </div>
 
     <table>
         <tr>
